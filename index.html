@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>WELCOME TO TIC-TAC-TOE</h1>
+        <h2>click here to start</h2>
+
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">pick players</button>
+        <button id="reset">reset</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+         <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+        <form action="" id="form">
+            <label for="playerone">player one</label>
+            <input required type="text" name="playerOne" id="playerOne" placeholder=" your image is `X`" title="input your name"><br>
+
+            <label for="playerTwo"> player two</label>
+            <input required type="text" name="playerTwo" id="playerTwo" placeholder="your image is `O`" title="input your name"><br>
+
+            <input type="submit" value="start game" id="submit">
+        </form>
+        </div>
+
+</div>
+        <h3 class="inst"></h3>
+        <div id="gameGrid">
+           
+        </div>
+    </div>
+</body>
+</html>

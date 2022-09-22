@@ -178,4 +178,5 @@ form.addEventListener("submit", (e) => {
     displayController.setgrid();
     btn.style.display = "none"
     inst.textContent = "may the best man win"
+    reset.style.display ="block"
   })

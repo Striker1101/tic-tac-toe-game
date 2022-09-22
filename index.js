@@ -38,28 +38,28 @@ let inst = document. querySelector('.inst')
 const child = []
 let arrX = []
 let arrO = []
+let tie = []
 
 
 
-const players = (name, choice) =>{
+const displayController = (() =>{
+
+  const players = (name, choice) =>{
 
     const setName = () => name;
-    const getName = (other) => `It is ${other.setName()} turn to play8`
+    const getName = (other) => `It is ${other.setName()} turn to play`
     return {getName, setName};
 }
 
 
-const displayController = (() =>{
     let count = 0;
-   let setgrid = () =>{
+   const setgrid = () =>{
         for (i =0; i < 9; i++){
          grid = document.createElement("button");
          grid.classList.add("btn")
          gameGrid.appendChild(grid)
          grid.setAttribute("data-count" ,`${i}`)
-         grid.setAttribute("border", "2px solid blue")
-         grid.setAttribute("style", "display: flex; flex-direction: row; justify-content: center; align-item: center;")
-         child.push(grid)    
+         child.push(grid)
         }
       }
       
@@ -82,10 +82,10 @@ const displayController = (() =>{
         gameGrid.addEventListener('click', (event)=>{
           let x = event.target;
           let clicked ="waiting"
+      
         let first = players(playerOne.value, "X");
         let second = players(playerTwo.value, "O");
           count++
-
           if(x.getAttribute("data-click") === "clicked"){
             inst.textContent = "Play on any empthy space"
           }else if (count % 2 == 1){
@@ -103,10 +103,23 @@ const displayController = (() =>{
             winner(arrO)
           }
         })
+        
       }
+      
 
       const winner = (arr) =>{
-        let ans;
+         child.every(e =>{
+          if(e.textContent == "X"||"0"){
+            tie.push('1')
+          }
+        })
+        // Tie
+        if(tie.length == 9){
+          
+          inst.textContent = "This game is a tie"
+        }
+        
+        //console.log(ans)
       
         const h1 =[0,1,2]
         const h2 = [3,4,5]
@@ -136,28 +149,23 @@ const displayController = (() =>{
               tester.push(1)
              }else{tester.push(9)}
             })
-            ans = tester.every(e => e == 1)
+           // ans = tester.every(e => e == 1)
            test1 = tester.filter(e => e < 2 )
-          }
-          //stop the game       
-        if (test1.length == 3){
-          console.log(gameGrid.children)
+           
+          //stop the game on win 
+        if (test1.length === 3){
+          
           child.forEach(e =>{
             e.disabled = true;
           })
-          
-
           count % 2 == 1 ?
-          inst.textContent = `one wins the game`:
-          inst.textContent = ` two wins the game`;
+          inst.textContent = `${playerOne.value} wins the game`:
+          inst.textContent = ` ${playerTwo.value}two wins the game`;
+          }
         }
-        })
-         
         
+        }) 
       }
-
-
-
       return {play,setgrid,winner};
 
 }) (); // iife

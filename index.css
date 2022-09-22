@@ -57,6 +57,7 @@ input{
     grid: 80px 80px 80px/ 120px 120px 120px;
     gap: 10px;
 }
-.grid{
-    border: 2px solid blue;
+.btn{
+  border-radius: 20px;
+  font-size: xx-large;
 }
